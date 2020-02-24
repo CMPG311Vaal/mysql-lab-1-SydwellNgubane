@@ -1,0 +1,114 @@
+1.
+mysql> create database BidvestBank;
+***********************************************************************************************************************************************************
+2.
+mysql> use BankBranch;
+
+mysql> create table BankBranch (branch_name varchar(20) not null primary key, branch_city varchar(20), assets int (10));
+
+mysql> create table Customer(customer_name varchar(20) not null primary key, customer_street varchar(20) not null, customer_city varchar(20) not null);
+
+mysql> create table CustomerAccount(account_number varchar(6) not null primary key, branch_name varchar(20) not null,balance double);
+
+mysql> create table Loan (loan_number varchar(4) not null primary key, branch_name varchar(20) not null, amount double);
+
+mysql> create table Depositor (customer_name varchar(20) not null, account_number varchar(6) not null);
+
+mysql> create table Borrower (customer_name varchar(20) not null, loan_number varchar(4) not null);
+
+mysql> create table Employee (employee_name varchar(20) not null primary key, branch_name varchar(20) not null, salary double);
+
+************************************************************************************************************************************************************
+3.
+mysql> insert into BankBranch values ('Midrand', 'Johannesburg', 7100000);
+mysql> insert into BankBranch values ('Newtown', 'Johannesburg', 9000000);
+mysql> insert into BankBranch values('Mabopane', 'Pretoria', 400000);
+mysql> insert into BankBranch values('Belgravia', 'Kimberly', 3700000);
+mysql> insert into BankBranch values('Sunnyside', 'Pretoria', 1700000 );
+mysql> insert into BankBranch values('Amanzimtoti', 'Durban', 300000 );
+mysql> insert into BankBranch values('Universitas', 'Bloemfontain', 2100000);
+mysql> insert into BankBranch values('Mamelodi', 'Pretoria',8000000 );
+
+mysql> insert into CustomerAccount values('A-5324', 'Newtown', 500);
+mysql> insert into CustomerAccount values('A-5624', 'Sunnyside',400);
+mysql> insert into CustomerAccount values('A-7794', 'Midrand', 900);
+mysql> insert into CustomerAccount values('A-4467', 'Mabopane', 700);
+mysql> insert into CustomerAccount values('A-3546', 'Midrand', 750);
+mysql> insert into CustomerAccount values('A-3453', 'Universitas', 700);
+mysql> insert into CustomerAccount values('A-2542', 'Mamelodi', 350);
+
+mysql> insert into Customer values('Modise', 'Spring', 'George');
+mysql> insert into Customer values('Brooks', 'Senator', 'Johannesburg');
+mysql> insert into Customer values('Jooste', 'North', 'Kimbery');
+mysql> insert into Customer values('Lombard', 'Sand Hill', 'Nelspruit');
+mysql> insert into Customer values('Mokwena', 'Walnut', 'Port-Elizabeth');
+mysql> insert into Customer values('Johnson', 'Mmabatho', 'Mafikeng');
+mysql> insert into Customer values('Johnson', 'Alma', 'Bloemfontein');
+mysql> insert into Customer values('Zwane', 'Main', 'Mafikeng');
+mysql> insert into Customer values('Lindsay', 'Park', 'George');
+mysql> insert into Customer values('Smith', 'North', 'Kimberly');
+mysql> insert into Customer values('Dlamini', 'Putnam', 'Port-Elizabeth');
+mysql> insert into Customer values('Williams', 'Nassau', 'Giyane');
+
+mysql> insert into depositor values('Zwane', 'A-3546');
+mysql> insert into depositor values('Lindsay', 'A-3453');
+mysql> insert into depositor values('Smith', 'A-4467');
+mysql> insert into depositor values('Dlamini', 'A-2542');
+mysql> insert into depositor values('Johnson', 'A-5624');
+mysql> insert into depositor values('Johnson', 'A-5624');
+mysql> insert into depositor values('Johnson', '7794');
+
+mysql> insert into loan values ('L-11', 'Mamelodi', 900);
+mysql> insert into loan values ('L-14', 'Newtown', 1500);
+mysql> insert into loan values ('L-15', 'Sunnyside', 1500);
+mysql> insert into loan values ('L-16', 'Sunnyside', 1300);
+mysql> insert into loan values ('L-17', 'Newtown', 1000);
+mysql> insert into loan values ('L-23', 'Universitas', 2000);
+mysql> insert into loan values ('l-93', 'Mabopae', 500);
+
+mysql> insert into borrower values('Modise', 'L-16');
+mysql> insert into borrower values('Jooste', 'L-93');
+mysql> insert into borrower values('Johnson', 'L-15');
+mysql> insert into borrower values('Jackson', 'L-14');
+mysql> insert into borrower values('Zwane', 'L-17');
+mysql> insert into borrower values('Smith', 'L-11');
+mysql> insert into borrower values('Smith', 'L-23');
+mysql> insert into borrower values('Wiliams', 'L-17');
+
+mysql> insert into employee values('Modise', 'Sunnyside', 1500);
+mysql> insert into employee values('Brown', 'Sunnyside', 1300);
+mysql> insert into employee values('Gopal', 'Sunnyside', 5300);
+mysql> insert into employee values('Johnson', 'Newtown', 1500);
+mysql> insert into employee values('Loreena', 'Newtown', 1300);
+mysql> insert into employee values('Peterson', 'Newtown', 2500);
+mysql> insert into employee values('Rao', 'Autin', 1500);
+mysql> insert into employee values('Sato', 'Autin', 1600);
+
+*****************************************************************************************************************************************************************
+4.
+  i)  mysql> select * from customerAccount where balance < 700;
+
+  ii) mysql> select * from customer where customer_city = 'Johannesburg';
+
+  iii)mysql> select * from employee where salary > 1500 AND branch_name <> 'Newtown';
+
+  iv) mysql> select AVG(salary) AS avg_salary FROM employee;
+
+  v)  mysql> select MAX(assets) from BankBranch;
+
+****************************************************************************************************************************************************************
+5.
+  i)  mysql> select * from employee where branch_name = 'Sunnyside';
+  ii) mysql> select * from  borrower;
+  iii)mysql> select account_number FROM customerAccount where balance > 900;
+  iv) mysql> select account_number,balance FROM customerAccount where branch_name = 'Newtown' AND balance > 600;
+  v)  mysql> select branch_name, assets from BankBranch;
+
+*******************************************************************************************************************************************************************
+
+
+
+
+
+
+
